@@ -41,9 +41,8 @@ public class Movimiento : MonoBehaviour
                     {
                         if (frontIntersectCount <= Mathf.Max(interesecciones[0].derCout, interesecciones[0].izCOunt))
                         {
-                            child.rotation = lasttras.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
-                            child.position = lasttras.position - new Vector3(0.0f, 0.0f, (child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastTile.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * lasttras.localScale.z));
-                            LastTile = child.gameObject;
+
+                            putTileInFront(child);
                             frontIntersectCount++;
                         }
                         else
@@ -62,9 +61,8 @@ public class Movimiento : MonoBehaviour
                     {
                         if (frontIntersectCount <= interesecciones[0].derCout)
                         {
-                            child.rotation = lasttras.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
-                            child.position = lasttras.position - new Vector3(0.0f, 0.0f, (child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastTile.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * lasttras.localScale.z));
-                            LastTile = child.gameObject;
+
+                            putTileInFront(child);
                             frontIntersectCount++;
                         }
                         else
@@ -76,9 +74,8 @@ public class Movimiento : MonoBehaviour
                     {
                         if (frontIntersectCount <= interesecciones[0].izCOunt)
                         {
-                            child.rotation = lasttras.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
-                            child.position = lasttras.position - new Vector3(0.0f, 0.0f, (child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastTile.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * lasttras.localScale.z));
-                            LastTile = child.gameObject;
+
+                            putTileInFront(child);
                             frontIntersectCount++;
                         }
                         else
@@ -88,16 +85,13 @@ public class Movimiento : MonoBehaviour
                     }
                     else
                     {
-                        child.rotation = lasttras.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
-                        child.position = lasttras.position - new Vector3(0.0f, 0.0f, (child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastTile.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * lasttras.localScale.z));
-                        LastTile = child.gameObject;
+                        putTileInFront(child);
                     }
                 }
                 else
                 {
-                    child.rotation = lasttras.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
-                    child.position = lasttras.position - new Vector3(0.0f, 0.0f, (child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastTile.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * lasttras.localScale.z));
-                    LastTile = child.gameObject;
+
+                    putTileInFront(child);
                 }
 
 
@@ -114,5 +108,15 @@ public class Movimiento : MonoBehaviour
             child.position += Vector3.forward * Time.deltaTime * velocidad;
         }
 
+    }
+
+
+    public void putTileInFront(Transform child)
+    {
+        Transform lasttras = LastTile.transform;
+
+        child.rotation = lasttras.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
+        child.position = lasttras.position - new Vector3(0.0f, 0.0f, (child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastTile.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * lasttras.localScale.z));
+        LastTile = child.gameObject;
     }
 }

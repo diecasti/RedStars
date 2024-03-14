@@ -25,7 +25,8 @@ public class interseccion : MonoBehaviour
 
     public void putLastDerecha(Transform child)
     {
-        Debug.Log("derecha");
+        
+        //Debug.Log("derecha");
 
         child.rotation = LastDerecha.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
         if (LastDerecha.GetComponent<MeshFilter>())
@@ -43,7 +44,7 @@ public class interseccion : MonoBehaviour
     {
         child.rotation = LastIz.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
 
-            Debug.Log("izquierda");
+            //Debug.Log("izquierda");
         if (LastIz.GetComponent<MeshFilter>())
         {
             child.position = LastIz.position - (LastIz.forward * ((child.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * child.localScale.z) + (LastIz.GetComponent<MeshFilter>().sharedMesh.bounds.max.z * LastIz.localScale.z)));
