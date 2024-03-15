@@ -5,8 +5,9 @@ using UnityEngine;
 public class spaceMovement : MonoBehaviour
 {
    public Camera cam;
+    public float aceleracion = 1;
     Vector3 velocidad;
-    public float sensitivity;
+    public float sensitivity = 15;
 
 
     public Camera playerCamera;
@@ -23,23 +24,23 @@ public class spaceMovement : MonoBehaviour
         //transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
 
 
-        velocidad = 0.2f * velocidad;
+        velocidad = 0.5f * velocidad;
 
         if (Input.GetKey(KeyCode.W))
         {
-            velocidad += transform.forward;
+            velocidad += transform.forward * aceleracion;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            velocidad -= transform.forward;
+            velocidad -= transform.forward * aceleracion;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            velocidad -= transform.right;
+            velocidad -= transform.right * aceleracion;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            velocidad += -transform.right;
+            velocidad += transform.right * aceleracion;
         }
         if (Input.GetKey(KeyCode.Q))
         {
