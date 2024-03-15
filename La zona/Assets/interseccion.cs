@@ -18,14 +18,10 @@ public class interseccion : MonoBehaviour
     public Transform Retruniz;
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void putLastDerecha(Transform child)
     {
-        
         //Debug.Log("derecha");
 
         child.rotation = LastDerecha.rotation; //esto es por si, resulta que la ultima tile era la de una interseccion, porque aun ni idea de como voy a hacer para instanciarlas
