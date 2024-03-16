@@ -74,8 +74,8 @@ public class spaceMovement : MonoBehaviour
 
                     Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
-                    if (hit.transform.GetComponent<minijuego_direccion>()){
-                        goToMinigame(hit.transform.GetComponent<minijuego_direccion>());
+                    if (hit.transform.GetComponent<minijuego>()){
+                        goToMinigame(hit.transform.GetComponent<minijuego>());
                     }
                 }
             }
