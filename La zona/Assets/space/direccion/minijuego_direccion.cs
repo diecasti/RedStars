@@ -34,23 +34,7 @@ public class minijuego_direccion : minijuego
     {
         if (selected)
         {
-            //habilitar uin cursor, o que se haga mediante teclas? mejor un cursor en mi opinion
-            //pero mientras tanto vamos a ponerlo con teclas
-
-            //if (Input.GetKey(KeyCode.A))
-            //{
-            //    volanteX.localRotation *= Quaternion.AngleAxis(sensitivity * 1, Vector3.up);
-            //}
-            //if (Input.GetKey(KeyCode.S))
-            //{
-            //    volanteY.localRotation *= Quaternion.AngleAxis(sensitivity * 1, Vector3.up);
-            //}
-            //if (Input.GetKey(KeyCode.D))
-            //{
-            //    volanteZ.localRotation *= Quaternion.AngleAxis(sensitivity * 1, Vector3.up);
-            //}
-
-
+         
 
         }
 

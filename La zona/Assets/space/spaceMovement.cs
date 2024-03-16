@@ -70,12 +70,17 @@ public class spaceMovement : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 5.0f))
                 {
-                    Debug.Log("hitea");
 
                     Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
                     if (hit.transform.GetComponent<minijuego>()){
+                        Debug.Log("hitea");
                         goToMinigame(hit.transform.GetComponent<minijuego>());
+                    }
+                    else if (hit.transform.GetComponent<Buttom>())
+                    {
+                        Debug.Log("hitea");
+                        hit.transform.GetComponent<Buttom>().UseButtom();
                     }
                 }
             }
