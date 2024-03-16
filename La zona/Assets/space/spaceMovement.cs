@@ -21,6 +21,10 @@ public class spaceMovement : MonoBehaviour
     public bool focused = false;
     public bool lockView = false;
 
+    public GameObject mano;
+    public GameObject manoBoton;
+
+
     private void Update()
     {
 
@@ -49,6 +53,12 @@ public class spaceMovement : MonoBehaviour
             {
                 velocidad += transform.right * aceleracion;
             }
+
+            //que al velocidad no sea mayor de 3
+            if (velocidad.magnitude > 3)
+            {
+                velocidad = velocidad.normalized * 3;
+            }
         }
 
         if (Input.GetKey(KeyCode.Q))
@@ -74,12 +84,17 @@ public class spaceMovement : MonoBehaviour
                     Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
                     if (hit.transform.GetComponent<minijuego>()){
-                        Debug.Log("hitea");
                         goToMinigame(hit.transform.GetComponent<minijuego>());
                     }
                     else if (hit.transform.GetComponent<Buttom>())
                     {
-                        Debug.Log("hitea");
+
+                        mano.SetActive(false);
+                        manoBoton.SetActive(true);
+
+                        IEnumerator rutina = Desbotonar();
+                        StartCoroutine(rutina);
+
                         hit.transform.GetComponent<Buttom>().UseButtom();
                     }
                 }
@@ -92,6 +107,18 @@ public class spaceMovement : MonoBehaviour
             }
         }
 
+    }
+
+
+    public IEnumerator Desbotonar()
+    {
+      
+        yield return new WaitForSeconds(0.5f);
+
+        mano.SetActive(true);
+        manoBoton.SetActive(false);
+
+        yield return null;
     }
 
 
