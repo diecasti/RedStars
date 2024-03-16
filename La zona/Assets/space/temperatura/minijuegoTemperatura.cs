@@ -21,7 +21,9 @@ public class minijuegoTemperatura : MonoBehaviour
 
     public void addCalor(int a)
     {
+
         calor += a;
+        calor = Mathf.Clamp(calor, -10, 10);
     }
 
 
