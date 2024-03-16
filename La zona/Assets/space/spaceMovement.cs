@@ -25,6 +25,12 @@ public class spaceMovement : MonoBehaviour
     public GameObject manoBoton;
 
 
+    private void Start()
+    {
+        //Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
+        Cursor.lockState = CursorLockMode.Locked;   // keep confined to center of screen
+    }
+
     private void Update()
     {
 
@@ -53,7 +59,14 @@ public class spaceMovement : MonoBehaviour
             {
                 velocidad += transform.right * aceleracion;
             }
-
+            if (Input.GetKey(KeyCode.Space))
+            {
+                velocidad += transform.up * aceleracion;
+            }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                velocidad -= transform.up * aceleracion;
+            }
             //que al velocidad no sea mayor de 3
             if (velocidad.magnitude > 3)
             {
@@ -85,6 +98,7 @@ public class spaceMovement : MonoBehaviour
 
                     if (hit.transform.GetComponent<minijuego>()){
                         goToMinigame(hit.transform.GetComponent<minijuego>());
+                        Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
                     }
                     else if (hit.transform.GetComponent<Buttom>())
                     {
@@ -104,6 +118,7 @@ public class spaceMovement : MonoBehaviour
                 focused = false;
                 currentmigame.selected = false;
                 lockView = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
 
