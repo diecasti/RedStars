@@ -21,6 +21,7 @@ public class minijuegoNuclear : minijuego
 
             if (targetTime <= 0.0f)
             {
+                //TODO hay que ahcer algo cuando se pierde el minijuego este
                 targetTime = clock;
             }
         }
