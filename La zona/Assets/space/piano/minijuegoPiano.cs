@@ -6,23 +6,37 @@ public class minijuegoPiano : MonoBehaviour
 {
 
     public List<int> secuencia;
-    public int aciertos = 0;
-    public int alteracion = 0;
+    public int aciertos;
+    public int alteracion;
 
     public GameObject pulso1; //empieza active
     public GameObject pulso2;
     public GameObject pulso3;
 
+    public List<AudioSource> latido;
+    public AudioSource silvido;
 
 
     private void Start()
     {
         IEnumerator rutina = alterar();
-        StartCoroutine(rutina);
+        StartCoroutine(rutina); 
+        IEnumerator late = latidos();
+        StartCoroutine(late);
         setPulso();
     }
     
-
+    IEnumerator latidos()
+    {
+        while (true)
+        {
+            for (int i = 0; i < alteracion && i < 3; i++)
+            {
+                latido[i].PlayScheduled(1f/ (float)(1+ alteracion-i));
+            }
+            yield return new WaitForSeconds(1f);
+        }
+    }
 
     IEnumerator alterar()
     {
@@ -65,9 +79,10 @@ public class minijuegoPiano : MonoBehaviour
             //TODO lanzar evento de terminar piano
             aciertos = 0;
 
-            Debug.Log("piano complete");
-
             relajar();
+            Debug.Log("piano complete");
+            silvido.PlayScheduled(3.0f);
+
         }
     }
 
@@ -75,6 +90,10 @@ public class minijuegoPiano : MonoBehaviour
     {
         alteracion--;
         alteracion = Mathf.Clamp(alteracion, 0, 4);
+        if (alteracion == 0)
+        {
+            silvido.PlayScheduled(3.0f);
+        }
         setPulso();
         //Lanzar eventos de sonido
     }

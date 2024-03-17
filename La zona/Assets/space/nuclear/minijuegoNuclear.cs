@@ -11,12 +11,19 @@ public class minijuegoNuclear : minijuego
     public int barrasDentro = 3;
 
     public GameObject icon;
-
+    public AudioSource audio;
+  
+    IEnumerator empezado()
+    {
+        yield return new WaitForSeconds(30.0f);
+    }
 
     private void FixedUpdate()
     {
         if (barrasDentro < 3)
         {
+            if (!audio.isPlaying)
+                audio.Play();
             icon.SetActive(true);
             targetTime -= (Time.deltaTime / (float)(barrasDentro + 1));
 
@@ -28,6 +35,8 @@ public class minijuegoNuclear : minijuego
         }
         if (barrasDentro == 3)
         {
+            if (audio.isPlaying)
+                audio.Stop();
             icon.SetActive(false);
             targetTime = clock;
         }

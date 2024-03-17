@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/space/Comienzo.unity
+    guid: af5068cfafcba6d4c8d20f8b5cc2a8c1
+  - enabled: 1
+    path: Assets/space/espace.unity
+    guid: 39e9b7b5e82b1c347a80e98fa711cf26
+  - enabled: 1
+    path: Assets/space/End.unity
+    guid: 1e41c713dabe1b44a8f1dc93cb7bef08
   m_configObjects: {}

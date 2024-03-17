@@ -8,6 +8,7 @@ public class Wheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     bool selected;
     Vector2 lastMouse;
     public int valor;
+    public AudioSource audio;
     public void OnPointerClick(PointerEventData eventData)
     {
 
@@ -62,37 +63,42 @@ public class Wheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
 
 
 
-            if (cross == Vector3.zero)
+            if (cross != Vector3.zero)
             {
-                // Target is straight ahead
+                if (!audio.isPlaying)
+                {
+                    audio.Play();
+                }
+
+                if (!IsLeft(delta, ori))
+                {
+
+
+                    float multiplyFactor = Mathf.Abs(HowManyLeft(delta, ori));
+                    multiplyFactor = multiplyFactor / 100.0f;
+                    if (multiplyFactor > 10)
+                        multiplyFactor = 3;
+
+                    // Target is to the right
+                    //Debug.Log(cross.y);
+
+                    transform.localRotation *= Quaternion.AngleAxis(-1 * multiplyFactor, Vector3.up);
+                    valor += (-1);//* (int)multiplyFactor);
+                }
+                else
+                {
+
+                    float multiplyFactor = Mathf.Abs(HowManyLeft(delta, ori));
+                    multiplyFactor = multiplyFactor / 100.0f;
+                    if (multiplyFactor > 10)
+                        multiplyFactor = 3;
+                    //Debug.Log("izquierda");
+                    // Target is to the left
+                    transform.localRotation *= Quaternion.AngleAxis(1 * multiplyFactor, Vector3.up);
+                    valor += (1); //* (int)multiplyFactor);
+                }
             }
-            else if (!IsLeft(delta, ori))
-            {
 
-
-                float multiplyFactor = Mathf.Abs(HowManyLeft(delta, ori));
-                multiplyFactor = multiplyFactor / 100.0f;
-                if (multiplyFactor > 10)
-                    multiplyFactor = 3;
-
-                // Target is to the right
-                //Debug.Log(cross.y);
-
-                transform.localRotation *= Quaternion.AngleAxis(-1 * multiplyFactor, Vector3.up);
-                valor += (-1);//* (int)multiplyFactor);
-            }
-            else
-            {
-
-                float multiplyFactor = Mathf.Abs(HowManyLeft(delta, ori));
-                multiplyFactor = multiplyFactor / 100.0f;
-                if (multiplyFactor > 10)
-                    multiplyFactor = 3;
-                //Debug.Log("izquierda");
-                // Target is to the left
-                transform.localRotation *= Quaternion.AngleAxis(1 * multiplyFactor, Vector3.up);
-                valor += (1); //* (int)multiplyFactor);
-            }
 
             valor = Mathf.Clamp(valor, 0, 1000);
             lastMouse = mousePos;

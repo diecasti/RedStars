@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class valvula : MonoBehaviour
+public class valvula : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public enum gas { O, N, Co2 };
 
@@ -11,6 +11,7 @@ public class valvula : MonoBehaviour
     public int valor;
     public gas tipo;
     public minijuegoGases juego;
+    AudioSource audio;
     public void OnPointerClick(PointerEventData eventData)
     {
     }
@@ -32,11 +33,21 @@ public class valvula : MonoBehaviour
         selected = false;
     }
 
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     private void FixedUpdate()
     {
 
         if (selected)
         {
+
+            if (!audio.isPlaying)
+            {
+                audio.Play();
+            }
+
             switch (tipo)
             {
                 case gas.O:
@@ -55,6 +66,13 @@ public class valvula : MonoBehaviour
                     }
                     break;
                 default: break;
+            }
+        }
+        else
+        {
+            if (audio.isPlaying)
+            {
+                audio.Stop();
             }
         }
     }

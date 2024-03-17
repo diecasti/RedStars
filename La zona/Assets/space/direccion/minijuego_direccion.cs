@@ -62,7 +62,18 @@ public class minijuego_direccion : minijuego
             yield return new WaitForSeconds(1.0f);
         }
     }
-       
+
+    IEnumerator nuevadireccion()
+    {
+        while (true)
+        {
+            desiredX = Random.Range(0, 1000);
+            desiredY = Random.Range(0, 1000);
+            desiredZ = Random.Range(0, 1000);
+            yield return new WaitForSeconds(80.0f); //cada minuto
+        }
+    }
+
     public void putMarks()
     {
         Vector3 a = marcaX.GetComponent<MeshFilter>().mesh.bounds.size;
@@ -87,6 +98,8 @@ public class minijuego_direccion : minijuego
     {
         IEnumerator rutina = jeje();
         StartCoroutine(rutina);
+        IEnumerator directiva = nuevadireccion();
+        StartCoroutine(directiva);
 
         putMarks();
     }
@@ -114,9 +127,9 @@ public class minijuego_direccion : minijuego
     public bool checkDirection()
     {
 
-        goodX = Vector3.Distance(marcadorObjetivoX.position, marcadorX.position) <= 0.1;
-        goodY = Vector3.Distance(marcadorObjetivoY.position, marcadorY.position) <= 0.1;
-        goodZ = Vector3.Distance(marcadorObjetivoZ.position, marcadorZ.position) <= 0.1;
+        goodX = Vector3.Distance(marcadorObjetivoX.position, marcadorX.position) <= 0.03;
+        goodY = Vector3.Distance(marcadorObjetivoY.position, marcadorY.position) <= 0.03;
+        goodZ = Vector3.Distance(marcadorObjetivoZ.position, marcadorZ.position) <= 0.03;
 
         return (goodX && goodY && goodZ);
     }
