@@ -3111,9 +3111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07f78c0aeb3a7747a28c63b4d4f03c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secuencia: 01000000020000000300000004000000
+  secuencia: 080000000c0000000300000005000000030000000c00000008000000
   aciertos: 0
-  alteracion: 3
+  alteracion: 2
   pulso1: {fileID: 1355181089}
   pulso2: {fileID: 273898763}
   pulso3: {fileID: 392928443}
