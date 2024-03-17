@@ -8,7 +8,7 @@ public class minijuegoTemperatura : MonoBehaviour
 
     public int temperatura = 23; //centigrados, me da igual todo
     public int calor = 0; //puede estar en positivo o negativo
-    public int ganancia = 0; //que temperatura le vamos a sumar cada X tiempo de forma aleatoria,. para que ahya jugabilidad, o no,. que los jugadores se destruyan ellos solos
+    public int ganancia = -7; //que temperatura le vamos a sumar cada X tiempo de forma aleatoria,. para que ahya jugabilidad, o no,. que los jugadores se destruyan ellos solos
 
 
     public float clock = 40.0f;
@@ -23,7 +23,7 @@ public class minijuegoTemperatura : MonoBehaviour
     {
 
         calor += a;
-        calor = Mathf.Clamp(calor, -10, 10);
+        calor = Mathf.Clamp(calor, -8, 8);
     }
 
 

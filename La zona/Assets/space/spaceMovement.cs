@@ -30,7 +30,7 @@ public class spaceMovement : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
         Cursor.lockState = CursorLockMode.Locked;   // keep confined to center of screen
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorTexture, new Vector2(16,16), CursorMode.Auto);
 
 
     }
@@ -102,6 +102,7 @@ public class spaceMovement : MonoBehaviour
 
                     if (hit.transform.GetComponent<minijuego>()){
                         goToMinigame(hit.transform.GetComponent<minijuego>());
+                        hit.transform.GetComponent<BoxCollider>().enabled = false;
                         Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
                     }
                     else if (hit.transform.GetComponent<Buttom>())
@@ -120,6 +121,7 @@ public class spaceMovement : MonoBehaviour
             else
             {
                 focused = false;
+                currentmigame.transform.GetComponent<BoxCollider>().enabled = true;
                 currentmigame.selected = false;
                 lockView = false;
                 Cursor.lockState = CursorLockMode.Locked;

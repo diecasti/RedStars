@@ -13,11 +13,6 @@ public class minijuegoNuclear : minijuego
 
 
 
-    private void Update()
-    {
-       
-    }
-
     private void FixedUpdate()
     {
         if (barrasDentro < 3)
