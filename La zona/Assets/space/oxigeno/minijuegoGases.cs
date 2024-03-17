@@ -41,6 +41,9 @@ public class minijuegoGases : minijuego
         //50 veces por segundo
         Oxigeno += OxGain /50.0f;
         CO2 += CO2Gain / 50.0f;
+
+        Oxigeno = Mathf.Clamp(Oxigeno,1, 1000);
+        CO2 = Mathf.Clamp(CO2, 1, 80);
     }
 
     private void Update()
