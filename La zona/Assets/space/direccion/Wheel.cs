@@ -10,6 +10,7 @@ public class Wheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     public int valor;
     public void OnPointerClick(PointerEventData eventData)
     {
+
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -78,7 +79,7 @@ public class Wheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
                 //Debug.Log(cross.y);
 
                 transform.localRotation *= Quaternion.AngleAxis(-1 * multiplyFactor, Vector3.up);
-                valor += (-1 * (int)multiplyFactor);
+                valor += (-1);//* (int)multiplyFactor);
             }
             else
             {
@@ -90,9 +91,10 @@ public class Wheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
                 //Debug.Log("izquierda");
                 // Target is to the left
                 transform.localRotation *= Quaternion.AngleAxis(1 * multiplyFactor, Vector3.up);
-                valor += (1 * (int)multiplyFactor);
+                valor += (1); //* (int)multiplyFactor);
             }
 
+            valor = Mathf.Clamp(valor, 0, 1000);
             lastMouse = mousePos;
         }
     }
