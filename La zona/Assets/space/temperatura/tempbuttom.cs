@@ -7,10 +7,10 @@ public class tempbuttom : Buttom
 
     public minijuegoTemperatura juego;
     public bool calor;
-
+    public AudioSource sound;
     public override void UseButtom()
     {
-
+        sound.Play();
         Debug.Log("temperatura botom");
         juego.addCalor(calor ? 1 : -1);
 

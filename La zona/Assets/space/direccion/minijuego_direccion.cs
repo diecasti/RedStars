@@ -43,7 +43,25 @@ public class minijuego_direccion : minijuego
     public Transform marcaY;
     public Transform marcaZ;
 
+    public GameObject icon;
 
+
+    
+    IEnumerator jeje()
+    {
+        while (true)
+        {
+            if (checkDirection())
+            {
+                icon.SetActive(false);
+            }
+            else
+            {
+                icon.SetActive(true);
+            }
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
        
     public void putMarks()
     {
@@ -67,6 +85,9 @@ public class minijuego_direccion : minijuego
 
     private void Start()
     {
+        IEnumerator rutina = jeje();
+        StartCoroutine(rutina);
+
         putMarks();
     }
     // Update is called once per frame

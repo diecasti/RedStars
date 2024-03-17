@@ -10,13 +10,14 @@ public class minijuegoNuclear : minijuego
 
     public int barrasDentro = 3;
 
-
+    public GameObject icon;
 
 
     private void FixedUpdate()
     {
         if (barrasDentro < 3)
         {
+            icon.SetActive(true);
             targetTime -= (Time.deltaTime / (float)(barrasDentro + 1));
 
             if (targetTime <= 0.0f)
@@ -27,6 +28,7 @@ public class minijuegoNuclear : minijuego
         }
         if (barrasDentro == 3)
         {
+            icon.SetActive(false);
             targetTime = clock;
         }
     }

@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class minijuegoGases : minijuego
 {
-    public float Oxigeno = 210;
-    public float Nitrogeno = 780;
-    public float CO2 = 10;
+    public float Oxigeno = 21*4;
+    public float Nitrogeno = 78*4;
+    public float CO2 = 1*4;
 
     //ganancia por segundo
     public float OxGain;
@@ -20,6 +21,19 @@ public class minijuegoGases : minijuego
     public int Operct;
     public int COperct;
     public int Nperct;
+
+    public GameObject icon;
+
+
+    public TextMeshPro texto;
+
+
+
+    private void Start()
+    {
+        IEnumerator rutina = jeje();
+        StartCoroutine(rutina);
+    }
 
     private void FixedUpdate()
     {
@@ -40,8 +54,26 @@ public class minijuegoGases : minijuego
          Nperct = (int)((Nitrogeno / total) * 100);
 
         //TODO  asignar luego esos porcentages a unos medidores
-
-
+        //vamos a asignarle los medidores ya porque xd
+        //van a ser texto que pereza
+        texto.text = "O2    : " + Operct + "    %\nCO2  : " + COperct + "   %\nN   : " + Nperct + " %";
     }
 
+    
+
+    IEnumerator jeje()
+    {
+        while (true)
+        {
+            if (Operct < 18 || Operct > 24 || Nperct < 60 || Nperct > 80)
+            {
+                icon.SetActive(true);
+            }
+            else
+            {
+                icon.SetActive(false);
+            }
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
 }

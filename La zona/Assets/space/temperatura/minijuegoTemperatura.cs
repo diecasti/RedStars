@@ -8,7 +8,7 @@ public class minijuegoTemperatura : MonoBehaviour
 
     public int temperatura = 23; //centigrados, me da igual todo
     public int calor = 0; //puede estar en positivo o negativo
-    public int ganancia = -7; //que temperatura le vamos a sumar cada X tiempo de forma aleatoria,. para que ahya jugabilidad, o no,. que los jugadores se destruyan ellos solos
+    public int ganancia = -6; //que temperatura le vamos a sumar cada X tiempo de forma aleatoria,. para que ahya jugabilidad, o no,. que los jugadores se destruyan ellos solos
 
 
     public float clock = 40.0f;
@@ -18,6 +18,8 @@ public class minijuegoTemperatura : MonoBehaviour
 
     public TextMeshPro temAct;
     public TextMeshPro texSumar;
+    public GameObject icono;
+
 
     public void addCalor(int a)
     {
@@ -38,17 +40,13 @@ public class minijuegoTemperatura : MonoBehaviour
 
             temAct.text = temperatura + "ºC";
 
-            if (temperatura < 0)
+            if (temperatura < 10)
             {
-                //evento congelado
+                icono.SetActive(true);
             }
-            else if (temperatura < 16)
+            else
             {
-                //evento frio
-            }
-            else if (temperatura > 35)
-            {
-                //calor, sin mas
+                icono.SetActive(false);
             }
         }
     }

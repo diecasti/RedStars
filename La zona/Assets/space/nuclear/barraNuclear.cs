@@ -38,15 +38,6 @@ public class barraNuclear : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (selected)
         {
-
-            //Vector3 ScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0); //z axis added to screen point 
-
-            //Vector3 NewWorldPosition = Camera.main.ScreenToWorldPoint(ScreenPosition); //Screen point converted to world point
-            //NewWorldPosition.z = 0;
-            //transform.localPosition = NewWorldPosition;
-
-
-
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
             transform.rotation = player.rotation;
         }
