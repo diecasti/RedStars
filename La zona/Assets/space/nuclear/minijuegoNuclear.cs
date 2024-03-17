@@ -13,11 +13,21 @@ public class minijuegoNuclear : minijuego
     public GameObject icon;
     public AudioSource audio;
   
+    
+
     IEnumerator empezado()
     {
         yield return new WaitForSeconds(30.0f);
+        //comineza la crisi nuclear
+        barrasDentro = 0;
+        yield return null;
     }
 
+    private void Start()
+    {
+        IEnumerator a = empezado();
+        StartCoroutine(a);
+    }
     private void FixedUpdate()
     {
         if (barrasDentro < 3)
