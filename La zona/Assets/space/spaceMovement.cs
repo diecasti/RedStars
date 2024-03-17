@@ -24,11 +24,15 @@ public class spaceMovement : MonoBehaviour
     public GameObject mano;
     public GameObject manoBoton;
 
+    public Texture2D cursorTexture;
 
     private void Start()
     {
         //Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
         Cursor.lockState = CursorLockMode.Locked;   // keep confined to center of screen
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+
+
     }
 
     private void Update()
