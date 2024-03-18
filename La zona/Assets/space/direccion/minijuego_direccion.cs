@@ -70,7 +70,8 @@ public class minijuego_direccion : minijuego
             desiredX = Random.Range(0, 1000);
             desiredY = Random.Range(0, 1000);
             desiredZ = Random.Range(0, 1000);
-            yield return new WaitForSeconds(80.0f); //cada minuto
+            putMarks();
+            yield return new WaitForSeconds(60.0f); //cada minuto
         }
     }
 

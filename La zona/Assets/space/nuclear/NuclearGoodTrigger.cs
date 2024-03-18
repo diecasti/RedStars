@@ -55,6 +55,7 @@ public class NuclearGoodTrigger : MonoBehaviour
             {
                 targetTime = clock;
                 barra.spawnBarra();
+                juego.barrasDentro--;
                 barra = null;
             }
         }
